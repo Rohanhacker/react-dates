@@ -96,7 +96,8 @@ const defaultProps = {
   onClose() {},
 
   // day presentation and interaction related props
-  renderDay: null,
+  renderCalendarDay: undefined,
+  renderDayContents: null,
   minimumNights: 1,
   enableOutsideDays: false,
   isDayBlocked: () => false,
@@ -282,15 +283,15 @@ class DateRangePicker extends React.Component {
     if (withPortal || withFullScreenPortal) {
       return (
         <Portal>
-          {this.renderDayPicker()}
+          {this.renderDayContentsPicker()}
         </Portal>
       );
     }
 
-    return this.renderDayPicker();
+    return this.renderDayContentsPicker();
   }
 
-  renderDayPicker() {
+  renderDayContentsPicker() {
     const {
       anchorDirection,
       openDirection,
@@ -316,7 +317,8 @@ class DateRangePicker extends React.Component {
       endDate,
       minimumNights,
       keepOpenOnDateSelect,
-      renderDay,
+      renderCalendarDay,
+      renderDayContents,
       renderCalendarInfo,
       firstDayOfWeek,
       initialVisibleMonth,
@@ -395,7 +397,8 @@ class DateRangePicker extends React.Component {
           isDayHighlighted={isDayHighlighted}
           isDayBlocked={isDayBlocked}
           keepOpenOnDateSelect={keepOpenOnDateSelect}
-          renderDay={renderDay}
+          renderCalendarDay={renderCalendarDay}
+          renderDayContents={renderDayContents}
           renderCalendarInfo={renderCalendarInfo}
           isFocused={isDayPickerFocused}
           showKeyboardShortcuts={showKeyboardShortcuts}

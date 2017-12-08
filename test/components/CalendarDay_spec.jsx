@@ -24,7 +24,7 @@ describe('CalendarDay', () => {
     it('contains arbitrary content if renderDay is provided', () => {
       const dayName = moment().format('dddd');
       const renderDay = day => day.format('dddd');
-      const wrapper = shallow(<CalendarDay renderDay={renderDay} />).dive();
+      const wrapper = shallow(<CalendarDay renderDayContents={renderDay} />).dive();
       expect(wrapper.text()).to.equal(dayName);
     });
 
@@ -32,7 +32,7 @@ describe('CalendarDay', () => {
       const modifiers = new Set().add(BLOCKED_MODIFIER);
       const renderDay = (day, mods) => `${day.format('dddd')}${mods.has(BLOCKED_MODIFIER) ? 'BLOCKED' : ''}`;
       const expected = `${moment().format('dddd')}BLOCKED`;
-      const wrapper = shallow(<CalendarDay renderDay={renderDay} modifiers={modifiers} />).dive();
+      const wrapper = shallow(<CalendarDay renderDayContents={renderDay} modifiers={modifiers} />).dive();
       expect(wrapper.text()).to.equal(expected);
     });
 
