@@ -180,7 +180,7 @@ class CalendarMonth extends React.Component {
             verticalScrollable && styles.CalendarMonth_caption__verticalScrollable,
           )}
         >
-          <strong>{monthTitle}</strong>
+          <strong>{}</strong>
         </div>
 
         <table
